@@ -5,14 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LİLE RESTORAN - Menü</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body class="font-roboto bg-gray-50">
   <div class="container mx-auto p-4">
@@ -26,6 +20,7 @@
       <div class="flex space-x-4 mb-4 md:mb-0">
         <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 transition duration-300" onclick="filterMenu('all')">Tümü</button>
         <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 transition duration-300" onclick="filterMenu('steak')">Steak</button>
+        <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 transition duration-300" onclick="filterMenu('tavuk')">Tavuk</button>
         <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 transition duration-300" onclick="filterMenu('köfte')">Köfte</button>
         <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500 transition duration-300" onclick="filterMenu('içecek')">İçecekler</button>
       </div>
@@ -36,7 +31,7 @@
     </nav>
     <!-- Menü Öğeleri -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu">
-      <!-- Her bir menü öğesi; data-* özellikleri modalda kullanılacak bilgileri içerir. -->
+      <!-- Mevcut ürünler -->
       <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
            data-title="Juicy Steak" 
            data-description="Lezzetli ve sulu steak." 
@@ -70,7 +65,406 @@
         <p class="text-gray-600 mt-2">Serinletici limonata.</p>
         <p class="text-gray-800 font-bold mt-2">₺20</p>
       </div>
-      <!-- Diğer menü öğeleri de benzer şekilde yapılandırılabilir... -->
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Medium-Rare Steak" 
+           data-description="Orta pişmiş steak, özel sos ile." 
+           data-price="₺130" 
+           data-img="https://storage.googleapis.com/a1aa/image/5wOjQmnax6Fla1jAPveoueZnG-phF6tRM9CYvcJgja4.jpg" 
+           onclick="openModal(this)">
+        <img alt="Medium-rare steak with sauce" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/5wOjQmnax6Fla1jAPveoueZnG-phF6tRM9CYvcJgja4.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Medium-Rare Steak</h2>
+        <p class="text-gray-600 mt-2">Orta pişmiş steak, özel sos ile.</p>
+        <p class="text-gray-800 font-bold mt-2">₺130</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Spicy Köfte" 
+           data-description="Baharatlı köfte, otlarla servis edilir." 
+           data-price="₺85" 
+           data-img="https://storage.googleapis.com/a1aa/image/2J40g7JpJ4VxxD59v5Ij3WqRizKPM3osmHfqR2WScbQ.jpg" 
+           onclick="openModal(this)">
+        <img alt="Spicy köfte with herbs" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/2J40g7JpJ4VxxD59v5Ij3WqRizKPM3osmHfqR2WScbQ.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Spicy Köfte</h2>
+        <p class="text-gray-600 mt-2">Baharatlı köfte, otlarla servis edilir.</p>
+        <p class="text-gray-800 font-bold mt-2">₺85</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Kola" 
+           data-description="Buz gibi kola." 
+           data-price="₺15" 
+           data-img="https://storage.googleapis.com/a1aa/image/yWcgAV2niF3uebpMs_Xm3mrQ_ss6oXcvylX6j6jgaBM.jpg" 
+           onclick="openModal(this)">
+        <img alt="Cold cola in a glass with ice" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/yWcgAV2niF3uebpMs_Xm3mrQ_ss6oXcvylX6j6jgaBM.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Kola</h2>
+        <p class="text-gray-600 mt-2">Buz gibi kola.</p>
+        <p class="text-gray-800 font-bold mt-2">₺15</p>
+      </div>
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Grilled Steak" 
+           data-description="Izgara steak, sebzelerle servis edilir." 
+           data-price="₺125" 
+           data-img="https://storage.googleapis.com/a1aa/image/E1uQksFKTx7rzNNMaJQQuijVgcswtyqbP8y5Y4cZVrw.jpg" 
+           onclick="openModal(this)">
+        <img alt="Grilled steak with vegetables" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/E1uQksFKTx7rzNNMaJQQuijVgcswtyqbP8y5Y4cZVrw.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Grilled Steak</h2>
+        <p class="text-gray-600 mt-2">Izgara steak, sebzelerle servis edilir.</p>
+        <p class="text-gray-800 font-bold mt-2">₺125</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Classic Köfte" 
+           data-description="Klasik köfte, ekmek ile servis edilir." 
+           data-price="₺75" 
+           data-img="https://storage.googleapis.com/a1aa/image/llk942g1DFDciQ6VL-ZAgRajpPnw0yWi2SlO8sQIxB0.jpg" 
+           onclick="openModal(this)">
+        <img alt="Classic köfte with bread" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/llk942g1DFDciQ6VL-ZAgRajpPnw0yWi2SlO8sQIxB0.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Classic Köfte</h2>
+        <p class="text-gray-600 mt-2">Klasik köfte, ekmek ile servis edilir.</p>
+        <p class="text-gray-800 font-bold mt-2">₺75</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Portakal Suyu" 
+           data-description="Taze sıkılmış portakal suyu." 
+           data-price="₺25" 
+           data-img="https://storage.googleapis.com/a1aa/image/VYeuKxKv5_5T-IsGBFCDRQiDHk2_9lbRi3V0840iJuw.jpg" 
+           onclick="openModal(this)">
+        <img alt="Fresh orange juice in a glass" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/VYeuKxKv5_5T-IsGBFCDRQiDHk2_9lbRi3V0840iJuw.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Portakal Suyu</h2>
+        <p class="text-gray-600 mt-2">Taze sıkılmış portakal suyu.</p>
+        <p class="text-gray-800 font-bold mt-2">₺25</p>
+      </div>
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Steak with Mashed Potatoes" 
+           data-description="Püre ile servis edilen steak." 
+           data-price="₺140" 
+           data-img="https://storage.googleapis.com/a1aa/image/FRrxJmzu8M2wtSF4byfXq188X5TwP0W7kBukH_6GfKs.jpg" 
+           onclick="openModal(this)">
+        <img alt="Steak with mashed potatoes" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/FRrxJmzu8M2wtSF4byfXq188X5TwP0W7kBukH_6GfKs.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Steak with Mashed Potatoes</h2>
+        <p class="text-gray-600 mt-2">Püre ile servis edilen steak.</p>
+        <p class="text-gray-800 font-bold mt-2">₺140</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Köfte with Rice" 
+           data-description="Pirinç ile servis edilen köfte." 
+           data-price="₺90" 
+           data-img="https://storage.googleapis.com/a1aa/image/z5RXzX9BVTen7xP9tW_ZB1VMyjgjCxpI-aqOQ4BKTzE.jpg" 
+           onclick="openModal(this)">
+        <img alt="Köfte with rice" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/z5RXzX9BVTen7xP9tW_ZB1VMyjgjCxpI-aqOQ4BKTzE.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Köfte with Rice</h2>
+        <p class="text-gray-600 mt-2">Pirinç ile servis edilen köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺90</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Iced Tea" 
+           data-description="Buzlu çay." 
+           data-price="₺18" 
+           data-img="https://storage.googleapis.com/a1aa/image/YPn2vku_PSd8V6pv4zPlN6aHntWEQB2NaLazWCGMAo8.jpg" 
+           onclick="openModal(this)">
+        <img alt="Iced tea in a glass" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/YPn2vku_PSd8V6pv4zPlN6aHntWEQB2NaLazWCGMAo8.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Iced Tea</h2>
+        <p class="text-gray-600 mt-2">Buzlu çay.</p>
+        <p class="text-gray-800 font-bold mt-2">₺18</p>
+      </div>
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Steak with Pepper Sauce" 
+           data-description="Biber sosu ile servis edilen steak." 
+           data-price="₺150" 
+           data-img="https://storage.googleapis.com/a1aa/image/HtbcJj4S2RnVugzo6iYLMqP_Ey_UpoAy5T6xH8Ol720.jpg" 
+           onclick="openModal(this)">
+        <img alt="Steak with pepper sauce" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/HtbcJj4S2RnVugzo6iYLMqP_Ey_UpoAy5T6xH8Ol720.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Steak with Pepper Sauce</h2>
+        <p class="text-gray-600 mt-2">Biber sosu ile servis edilen steak.</p>
+        <p class="text-gray-800 font-bold mt-2">₺150</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Köfte with Yogurt" 
+           data-description="Yoğurt ile servis edilen köfte." 
+           data-price="₺95" 
+           data-img="https://storage.googleapis.com/a1aa/image/btLr_38MZwqQNJp3aBOjYwHB3pAOZ1pKpsFsoEMFNB4.jpg" 
+           onclick="openModal(this)">
+        <img alt="Köfte with yogurt" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/btLr_38MZwqQNJp3aBOjYwHB3pAOZ1pKpsFsoEMFNB4.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Köfte with Yogurt</h2>
+        <p class="text-gray-600 mt-2">Yoğurt ile servis edilen köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺95</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Mineral Water" 
+           data-description="Mineral su." 
+           data-price="₺10" 
+           data-img="https://storage.googleapis.com/a1aa/image/bnjKu_-PxtamCdiKl4rE5hBxKaXer7n2LTbxWZUKCls.jpg" 
+           onclick="openModal(this)">
+        <img alt="Mineral water in a glass" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/bnjKu_-PxtamCdiKl4rE5hBxKaXer7n2LTbxWZUKCls.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Mineral Water</h2>
+        <p class="text-gray-600 mt-2">Mineral su.</p>
+        <p class="text-gray-800 font-bold mt-2">₺10</p>
+      </div>
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Steak with Garlic Butter" 
+           data-description="Sarımsaklı tereyağı ile servis edilen steak." 
+           data-price="₺160" 
+           data-img="https://storage.googleapis.com/a1aa/image/oRq1lmML3bgUAXpLxX4NVLBCnhpyfSo7amVU-2Oq1yg.jpg" 
+           onclick="openModal(this)">
+        <img alt="Steak with garlic butter" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/oRq1lmML3bgUAXpLxX4NVLBCnhpyfSo7amVU-2Oq1yg.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Steak with Garlic Butter</h2>
+        <p class="text-gray-600 mt-2">Sarımsaklı tereyağı ile servis edilen steak.</p>
+        <p class="text-gray-800 font-bold mt-2">₺160</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Köfte with Tomato Sauce" 
+           data-description="Domates sosu ile servis edilen köfte." 
+           data-price="₺100" 
+           data-img="https://storage.googleapis.com/a1aa/image/QC6_KSrv56wTW6_XiCFZn4fx3N1S3mvSO-EOp-WtzPk.jpg" 
+           onclick="openModal(this)">
+        <img alt="Köfte with tomato sauce" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/QC6_KSrv56wTW6_XiCFZn4fx3N1S3mvSO-EOp-WtzPk.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Köfte with Tomato Sauce</h2>
+        <p class="text-gray-600 mt-2">Domates sosu ile servis edilen köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺100</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Kahve" 
+           data-description="Sıcak kahve." 
+           data-price="₺12" 
+           data-img="https://storage.googleapis.com/a1aa/image/Bug4e2Vb8RbHvUnGxBm06D3aYMxOENaAvBsndA-lyOo.jpg" 
+           onclick="openModal(this)">
+        <img alt="Hot coffee in a cup" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/Bug4e2Vb8RbHvUnGxBm06D3aYMxOENaAvBsndA-lyOo.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Kahve</h2>
+        <p class="text-gray-600 mt-2">Sıcak kahve.</p>
+        <p class="text-gray-800 font-bold mt-2">₺12</p>
+      </div>
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Steak with Mushroom Sauce" 
+           data-description="Mantar sosu ile servis edilen steak." 
+           data-price="₺170" 
+           data-img="https://storage.googleapis.com/a1aa/image/_KgcxUMGZFI2LSEt21r1jnTMC6cgXoJD2EngHRqXsm4.jpg" 
+           onclick="openModal(this)">
+        <img alt="Steak with mushroom sauce" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/_KgcxUMGZFI2LSEt21r1jnTMC6cgXoJD2EngHRqXsm4.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Steak with Mushroom Sauce</h2>
+        <p class="text-gray-600 mt-2">Mantar sosu ile servis edilen steak.</p>
+        <p class="text-gray-800 font-bold mt-2">₺170</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Köfte with Pita Bread" 
+           data-description="Pide ekmeği ile servis edilen köfte." 
+           data-price="₺110" 
+           data-img="https://storage.googleapis.com/a1aa/image/gVNL1h_KdhtKeBDSNm_-4qrxGPR7xLauszkzFKG0P9c.jpg" 
+           onclick="openModal(this)">
+        <img alt="Köfte with pita bread" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/gVNL1h_KdhtKeBDSNm_-4qrxGPR7xLauszkzFKG0P9c.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Köfte with Pita Bread</h2>
+        <p class="text-gray-600 mt-2">Pide ekmeği ile servis edilen köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺110</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Çay" 
+           data-description="Sıcak çay." 
+           data-price="₺8" 
+           data-img="https://storage.googleapis.com/a1aa/image/V8U7D1ZrtBKkjz2f36tNMcvyos8gLbPEci-uF5DeJAY.jpg" 
+           onclick="openModal(this)">
+        <img alt="Hot tea in a cup" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/V8U7D1ZrtBKkjz2f36tNMcvyos8gLbPEci-uF5DeJAY.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Çay</h2>
+        <p class="text-gray-600 mt-2">Sıcak çay.</p>
+        <p class="text-gray-800 font-bold mt-2">₺8</p>
+      </div>
+      <div class="menu-item steak bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Steak with Red Wine Sauce" 
+           data-description="Kırmızı şarap sosu ile servis edilen steak." 
+           data-price="₺180" 
+           data-img="https://storage.googleapis.com/a1aa/image/AzIsgIZBG751TNdO4Op4eYpOlcTrKuJCzQMiR5Oq_O0.jpg" 
+           onclick="openModal(this)">
+        <img alt="Steak with red wine sauce" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/AzIsgIZBG751TNdO4Op4eYpOlcTrKuJCzQMiR5Oq_O0.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Steak with Red Wine Sauce</h2>
+        <p class="text-gray-600 mt-2">Kırmızı şarap sosu ile servis edilen steak.</p>
+        <p class="text-gray-800 font-bold mt-2">₺180</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Köfte with Grilled Vegetables" 
+           data-description="Izgara sebzelerle servis edilen köfte." 
+           data-price="₺115" 
+           data-img="https://storage.googleapis.com/a1aa/image/SmYoG4_OfaZSkeV9pSmzXnyvIeI2t5S4QXZSY-AYHnw.jpg" 
+           onclick="openModal(this)">
+        <img alt="Köfte with grilled vegetables" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/SmYoG4_OfaZSkeV9pSmzXnyvIeI2t5S4QXZSY-AYHnw.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Köfte with Grilled Vegetables</h2>
+        <p class="text-gray-600 mt-2">Izgara sebzelerle servis edilen köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺115</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Sıcak Çikolata" 
+           data-description="Sıcak çikolata." 
+           data-price="₺14" 
+           data-img="https://storage.googleapis.com/a1aa/image/OYFay9H_MBns9FMhUW0NmGMS0OcKN-bvJ2bXsUFW-xg.jpg" 
+           onclick="openModal(this)">
+        <img alt="Hot chocolate in a cup" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/OYFay9H_MBns9FMhUW0NmGMS0OcKN-bvJ2bXsUFW-xg.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Sıcak Çikolata</h2>
+        <p class="text-gray-600 mt-2">Sıcak çikolata.</p>
+        <p class="text-gray-800 font-bold mt-2">₺14</p>
+      </div>
+      <!-- Yeni Eklenen 15 Ürün -->
+      <!-- Tavuk Kategorisi -->
+      <div class="menu-item tavuk bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Grilled Chicken" 
+           data-description="Izgara tavuk, özel baharatlarla marine edilmiş." 
+           data-price="₺100" 
+           data-img="https://storage.googleapis.com/a1aa/image/grilled_chicken.jpg" 
+           onclick="openModal(this)">
+        <img alt="Grilled chicken on a plate" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/grilled_chicken.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Grilled Chicken</h2>
+        <p class="text-gray-600 mt-2">Izgara tavuk, özel baharatlarla marine edilmiş.</p>
+        <p class="text-gray-800 font-bold mt-2">₺100</p>
+      </div>
+      <div class="menu-item tavuk bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Crispy Chicken Burger" 
+           data-description="Kızarmış tavuk burger, çıtır ve lezzetli." 
+           data-price="₺110" 
+           data-img="https://storage.googleapis.com/a1aa/image/chicken_burger.jpg" 
+           onclick="openModal(this)">
+        <img alt="Crispy chicken burger" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/chicken_burger.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Crispy Chicken Burger</h2>
+        <p class="text-gray-600 mt-2">Kızarmış tavuk burger, çıtır ve lezzetli.</p>
+        <p class="text-gray-800 font-bold mt-2">₺110</p>
+      </div>
+      <div class="menu-item tavuk bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Chicken Wings" 
+           data-description="Baharatlı tavuk kanatları, sos eşliğinde." 
+           data-price="₺90" 
+           data-img="https://storage.googleapis.com/a1aa/image/chicken_wings.jpg" 
+           onclick="openModal(this)">
+        <img alt="Chicken wings" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/chicken_wings.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Chicken Wings</h2>
+        <p class="text-gray-600 mt-2">Baharatlı tavuk kanatları, sos eşliğinde.</p>
+        <p class="text-gray-800 font-bold mt-2">₺90</p>
+      </div>
+      <div class="menu-item tavuk bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Chicken Salad" 
+           data-description="Taze sebzeler ve tavuk dilimleriyle hazırlanan salata." 
+           data-price="₺85" 
+           data-img="https://storage.googleapis.com/a1aa/image/chicken_salad.jpg" 
+           onclick="openModal(this)">
+        <img alt="Chicken salad" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/chicken_salad.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Chicken Salad</h2>
+        <p class="text-gray-600 mt-2">Taze sebzeler ve tavuk dilimleriyle hazırlanan salata.</p>
+        <p class="text-gray-800 font-bold mt-2">₺85</p>
+      </div>
+      <div class="menu-item tavuk bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Chicken Shish" 
+           data-description="Izgara tavuk şiş, renkli sebzelerle servis edilir." 
+           data-price="₺120" 
+           data-img="https://storage.googleapis.com/a1aa/image/chicken_shish.jpg" 
+           onclick="openModal(this)">
+        <img alt="Chicken shish" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/chicken_shish.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Chicken Shish</h2>
+        <p class="text-gray-600 mt-2">Izgara tavuk şiş, renkli sebzelerle servis edilir.</p>
+        <p class="text-gray-800 font-bold mt-2">₺120</p>
+      </div>
+      <!-- Köfte Kategorisinden Yeni Ürünler -->
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Cheese Köfte" 
+           data-description="Peynir dolgulu lezzetli köfte." 
+           data-price="₺95" 
+           data-img="https://storage.googleapis.com/a1aa/image/cheese_kofte.jpg" 
+           onclick="openModal(this)">
+        <img alt="Cheese köfte" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/cheese_kofte.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Cheese Köfte</h2>
+        <p class="text-gray-600 mt-2">Peynir dolgulu lezzetli köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺95</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Spicy Köfte Deluxe" 
+           data-description="Extra baharatlı ve lezzetli köfte." 
+           data-price="₺105" 
+           data-img="https://storage.googleapis.com/a1aa/image/spicy_kofte_deluxe.jpg" 
+           onclick="openModal(this)">
+        <img alt="Spicy köfte deluxe" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/spicy_kofte_deluxe.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Spicy Köfte Deluxe</h2>
+        <p class="text-gray-600 mt-2">Extra baharatlı ve lezzetli köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺105</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Herbed Köfte" 
+           data-description="Taze otlar ve baharatlarla hazırlanmış köfte." 
+           data-price="₺90" 
+           data-img="https://storage.googleapis.com/a1aa/image/herbed_kofte.jpg" 
+           onclick="openModal(this)">
+        <img alt="Herbed köfte" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/herbed_kofte.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Herbed Köfte</h2>
+        <p class="text-gray-600 mt-2">Taze otlar ve baharatlarla hazırlanmış köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺90</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Mixed Meat Köfte" 
+           data-description="Farklı et karışımlarıyla hazırlanan köfte." 
+           data-price="₺100" 
+           data-img="https://storage.googleapis.com/a1aa/image/mixed_meat_kofte.jpg" 
+           onclick="openModal(this)">
+        <img alt="Mixed meat köfte" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/mixed_meat_kofte.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Mixed Meat Köfte</h2>
+        <p class="text-gray-600 mt-2">Farklı et karışımlarıyla hazırlanan köfte.</p>
+        <p class="text-gray-800 font-bold mt-2">₺100</p>
+      </div>
+      <div class="menu-item köfte bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Mini Köfte Skewers" 
+           data-description="Atıştırmalık mini köfte şişler." 
+           data-price="₺80" 
+           data-img="https://storage.googleapis.com/a1aa/image/mini_kofte_skewers.jpg" 
+           onclick="openModal(this)">
+        <img alt="Mini köfte skewers" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/mini_kofte_skewers.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Mini Köfte Skewers</h2>
+        <p class="text-gray-600 mt-2">Atıştırmalık mini köfte şişler.</p>
+        <p class="text-gray-800 font-bold mt-2">₺80</p>
+      </div>
+      <!-- İçecek Kategorisinden Yeni Ürünler -->
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Ayran" 
+           data-description="Serinletici ve ferahlatıcı ayran." 
+           data-price="₺12" 
+           data-img="https://storage.googleapis.com/a1aa/image/ayran.jpg" 
+           onclick="openModal(this)">
+        <img alt="Ayran" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/ayran.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Ayran</h2>
+        <p class="text-gray-600 mt-2">Serinletici ve ferahlatıcı ayran.</p>
+        <p class="text-gray-800 font-bold mt-2">₺12</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Fresh Mint Lemonade" 
+           data-description="Nane dokunuşlu taze limonata." 
+           data-price="₺25" 
+           data-img="https://storage.googleapis.com/a1aa/image/fresh_mint_lemonade.jpg" 
+           onclick="openModal(this)">
+        <img alt="Fresh mint lemonade" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/fresh_mint_lemonade.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Fresh Mint Lemonade</h2>
+        <p class="text-gray-600 mt-2">Nane dokunuşlu taze limonata.</p>
+        <p class="text-gray-800 font-bold mt-2">₺25</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Iced Coffee" 
+           data-description="Soğuk ve aromatik buzlu kahve." 
+           data-price="₺18" 
+           data-img="https://storage.googleapis.com/a1aa/image/iced_coffee.jpg" 
+           onclick="openModal(this)">
+        <img alt="Iced coffee" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/iced_coffee.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Iced Coffee</h2>
+        <p class="text-gray-600 mt-2">Soğuk ve aromatik buzlu kahve.</p>
+        <p class="text-gray-800 font-bold mt-2">₺18</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Herbal Tea" 
+           data-description="Bitki çayları ile rahatlatıcı bir seçenek." 
+           data-price="₺10" 
+           data-img="https://storage.googleapis.com/a1aa/image/herbal_tea.jpg" 
+           onclick="openModal(this)">
+        <img alt="Herbal tea" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/herbal_tea.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Herbal Tea</h2>
+        <p class="text-gray-600 mt-2">Bitki çayları ile rahatlatıcı bir seçenek.</p>
+        <p class="text-gray-800 font-bold mt-2">₺10</p>
+      </div>
+      <div class="menu-item içecek bg-white p-4 rounded shadow cursor-pointer transform transition duration-300 hover:scale-105" 
+           data-title="Berry Smoothie" 
+           data-description="Taze meyvelerle hazırlanmış smoothie." 
+           data-price="₺30" 
+           data-img="https://storage.googleapis.com/a1aa/image/berry_smoothie.jpg" 
+           onclick="openModal(this)">
+        <img alt="Berry smoothie" class="w-full h-48 object-cover rounded" src="https://storage.googleapis.com/a1aa/image/berry_smoothie.jpg"/>
+        <h2 class="text-xl font-bold mt-4">Berry Smoothie</h2>
+        <p class="text-gray-600 mt-2">Taze meyvelerle hazırlanmış smoothie.</p>
+        <p class="text-gray-800 font-bold mt-2">₺30</p>
+      </div>
     </div>
   </div>
 
